@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function InExList({incomes,expenses}) {
+export default function InExList({incomes, expenses}) {
     return (
         <div className='row my-3' >
             <div className="col-md-10 mx-auto">

@@ -1,12 +1,25 @@
 import React, { useState } from 'react'
 
-export default function Transactions() {
+export default function Transactions({addIncome, addExpense}) {
     const [label, setLabel] = useState('');
     const [amount, setAmount] = useState('');
 
     const addInc = (income) => {
-        console.log(income);
+        addIncome(income);
+        setTimeout(() => {
+            setLabel('');
+            setAmount('');
+        }, 500)
     }
+
+    const addEx = (expense) => {
+        addExpense(expense);
+        setTimeout(() => {
+            setLabel('');
+            setAmount('');
+        }, 500)
+    }
+
     return (
         <div className='row' >
             <div className="col-md-6 mx-auto">
@@ -24,17 +37,22 @@ export default function Transactions() {
                             value={label}
                             onChange={(event) => setLabel(event.target.value)}
                             type='text' 
-                            className='form-control mb-2' 
+                            className='form-control mb-2'
+                            placeholder='Label'
                         />
                         <input
                             value={amount}
                             onChange={(event) => setAmount(event.target.value)}
                             type='number' 
                             className='form-control mb-2' 
+                            placeholder='Amount'
                         />
                     </div>
                     <div className="col-auto">
-                        <button className="btn btn-sm btn-danger mb-3">
+                        <button
+                            onClick={() => addEx({id: 2, label, amount})}
+                            className="btn btn-sm btn-danger mb-3"
+                        >
                             <i className="bi bi-bag-dash-fill"></i>
                         </button>
                     </div>

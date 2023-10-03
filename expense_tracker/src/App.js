@@ -18,6 +18,15 @@ function App() {
       id: 1, label: 'Salary', amount: '8000'
     }
   ])
+
+  const addIncome = (income) => {
+    setIncomes([income, ...incomes]);
+  }
+
+  const addExpense = (expense) => {
+    setExpenses([expense, ...expenses]);
+  }
+
   return (
     <div className="container">
       <div className="row my-4">
@@ -25,8 +34,14 @@ function App() {
           <div className="card">
             <div className="card-body" >
               <Balance balance="8000" />
-              <Transactions />
-              <InExList incomes={incomes} expenses={expenses} />
+              <Transactions 
+                addIncome={addIncome}
+                addExpense={addExpense}
+              />
+              <InExList 
+                incomes={incomes} 
+                expenses={expenses} 
+              />
             </div>
           </div>
         </div>
