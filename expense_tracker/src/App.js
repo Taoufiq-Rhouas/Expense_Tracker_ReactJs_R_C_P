@@ -1,6 +1,7 @@
 import { useState } from "react";
 import Balance from "./components/Balance";
 import InExList from "./components/InExList";
+import Transactions from "./components/Transactions";
 
 function App() {
   const [expenses, setExpenses] = useState([
@@ -24,6 +25,7 @@ function App() {
           <div className="card">
             <div className="card-body" >
               <Balance balance="8000" />
+              <Transactions />
               <InExList incomes={incomes} expenses={expenses} />
             </div>
           </div>
