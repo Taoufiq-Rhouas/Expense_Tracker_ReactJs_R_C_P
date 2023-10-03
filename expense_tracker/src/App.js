@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Balance from "./components/Balance";
 import InExList from "./components/InExList";
 import Transactions from "./components/Transactions";
 
 function App() {
+
+  const [balance, setBalance] = useState(0);
+
   const [expenses, setExpenses] = useState([
     {
       id: 1, label: 'Rent', amount: '300'
@@ -37,13 +40,27 @@ function App() {
     setExpenses(updatedExpenses);
   }
 
+  const calcBalance = () => {
+    const totalIncArray = incomes.map(income => income.amount);
+    const totalExArray = expenses.map(expense => expense.amount);
+    // const totalInc = totalIncArray.reduce((amount, item) => parseInt(amount) + parseInt(item), 0 )
+    const totalInc = totalIncArray.reduce((amount, item) => parseFloat(amount) + parseFloat(item), 0 )
+    const totalEx = totalExArray.reduce((amount, item) => parseFloat(amount) + parseFloat(item), 0 )
+    
+    setBalance(parseFloat(totalInc) - parseFloat(totalEx));
+  }
+
+  useEffect(() => {
+    calcBalance();
+  })
+
   return (
     <div className="container">
       <div className="row my-4">
         <div className="col-md-8 mx-auto">
           <div className="card">
             <div className="card-body" >
-              <Balance balance="8000" />
+              <Balance balance={balance} />
               <Transactions 
                 addIncome={addIncome}
                 addExpense={addExpense}
