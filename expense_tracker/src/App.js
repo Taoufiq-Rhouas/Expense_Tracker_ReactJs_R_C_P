@@ -27,6 +27,16 @@ function App() {
     setExpenses([expense, ...expenses]);
   }
 
+  const removeIncome =  (id) => {
+    const updatedIncomes = incomes.filter(income => income.id !== id);
+    setIncomes(updatedIncomes);
+  }
+
+  const removeExpense =  (id) => {
+    const updatedExpenses = expenses.filter(expense => expense.id !== id);
+    setExpenses(updatedExpenses);
+  }
+
   return (
     <div className="container">
       <div className="row my-4">
@@ -40,7 +50,9 @@ function App() {
               />
               <InExList 
                 incomes={incomes} 
-                expenses={expenses} 
+                expenses={expenses}
+                removeIncome={removeIncome}
+                removeExpense={removeExpense}
               />
             </div>
           </div>

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function InExList({incomes, expenses}) {
+export default function InExList({incomes, expenses, removeIncome, removeExpense}) {
     return (
         <div className='row my-3' >
             <div className="col-md-10 mx-auto">
@@ -15,7 +15,10 @@ export default function InExList({incomes, expenses}) {
                                             <h6 className="mb-1">
                                                 {expense.label} ${expense.amount}
                                             </h6>
-                                            <span className="text-danger">
+                                            <span 
+                                                className="text-danger"
+                                                onClick={() => removeExpense(expense.id)}
+                                            >
                                                 <i className="bi bi-bag-x"></i>
                                             </span>
                                         </div>
@@ -36,7 +39,10 @@ export default function InExList({incomes, expenses}) {
                                             <h6 className="mb-1">
                                                 {income.label} ${income.amount}
                                             </h6>
-                                            <span className="text-danger">
+                                            <span 
+                                                className="text-danger"
+                                                onClick={() => removeIncome(income.id)}
+                                            >
                                                 <i className="bi bi-bag-x"></i>
                                             </span>
                                         </div>

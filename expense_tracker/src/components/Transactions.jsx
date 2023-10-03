@@ -26,6 +26,7 @@ export default function Transactions({addIncome, addExpense}) {
                 <div className="row g-3 my-3">
                     <div className="col-auto">
                         <button
+                            disabled={!label || !amount}
                             onClick={() => addInc({id: 3, label, amount})}
                             className="btn btn-sm btn-success mb-3"
                         >
@@ -50,6 +51,7 @@ export default function Transactions({addIncome, addExpense}) {
                     </div>
                     <div className="col-auto">
                         <button
+                            disabled={!label || !amount}
                             onClick={() => addEx({id: 2, label, amount})}
                             className="btn btn-sm btn-danger mb-3"
                         >
